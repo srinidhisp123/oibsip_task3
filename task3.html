@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            background-image: url('sampleimage.jpg'); /* Replace 'your-image.jpg' with your image file */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: rgba(255, 255, 255, 0.7); /* Adjust the alpha value (0.7) for transparency */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label, select, button, textarea {
+            display: block;
+            margin: 10px;
+            background-color: rgba(255, 255, 255, 0.7); /* Adjust the alpha value for transparency */
+            padding: 10px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50px; /* For a round shape */
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #area {
+            background-color: rgba(255, 255, 255, 0.7); /* Adjust the alpha value for transparency */
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <label>Temperature unit:<input type="number" placeholder="Enter Temperature" id="temp"></label><br>
+    <label for="unitSelector">Select Unit:</label>
+    <select id="unitSelector">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="kelvin">Kelvin</option>
+    </select><br>
+    <button onclick="convertTemperature()">Convert</button><br>
+    <label>Display area:<textarea id="area"></textarea></label>
+
+    <script>
+        function convertTemperature() {
+            var temp = document.getElementById('temp').value;
+            var unit = document.getElementById('unitSelector').value;
+            var convertedTemperature;
+            var unitString;
+
+            if (temp === "") {
+                alert("Enter a valid number");
+                return;
+            }
+
+            if (unit === "celsius") {
+                convertedTemperature = (parseFloat(temp) - 32) * 5/9;
+                unitString = "Celsius";
+            } else if (unit === "fahrenheit") {
+                convertedTemperature = (parseFloat(temp) * 9/5) + 32;
+                unitString = "Fahrenheit";
+            } else if (unit === "kelvin") {
+                convertedTemperature = parseFloat(temp) + 273.15;
+                unitString = "Kelvin";
+            }
+
+            var displayArea = document.getElementById('area');
+            displayArea.value = "Converted temperature in " + unitString + ": " + convertedTemperature;
+        }
+    </script>
+</body>
+</html>
+etha run pannu modify paniruken
